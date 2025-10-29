@@ -1,0 +1,26 @@
+@prefix imdb: <http://example.org/imdb/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+imdb:tt11655566 a dbo:Film ;
+    dct:title "Lilo & Stitch" ;
+    dbo:releaseYear "2025"^^xsd:gYear ;
+    dbo:genre imdb:Genre_Action ,
+              imdb:Genre_Drama ,
+              imdb:Genre_Comedy ;
+    owl:sameAs <https://www.imdb.com/title/tt11655566> .
+
+imdb:Genre_Action a dbo:Genre ;
+    rdfs:label "Action" ;
+    owl:sameAs <http://dbpedia.org/resource/Action_film> .
+
+imdb:Genre_Drama a dbo:Genre ;
+    rdfs:label "Drama" ;
+    owl:sameAs <http://dbpedia.org/resource/Drama_film> .
+
+imdb:Genre_Comedy a dbo:Genre ;
+    rdfs:label "Comedy" ;
+    owl:sameAs <http://dbpedia.org/resource/Comedy_film> .

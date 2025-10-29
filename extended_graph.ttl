@@ -1,0 +1,487 @@
+@prefix imdb: <http://example.org/imdb/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fs: <https://w3id.org/framester/schema/> .
+@prefix framenet: <http://framenet.icsi.berkeley.edu/fn/> .
+@prefix wn30: <http://wordnet-rdf.princeton.edu/wn30/> .
+@prefix propbank: <http://propbank.org/frames/> .
+@prefix verbatlas: <http://www.ontologydesignpatterns.org/cp/owl/verbatlas#> .
+@prefix dol: <http://www.ontologydesignpatterns.org/ont/dolce/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ls: <http://example.org/liloStitch/> .
+
+# original graph
+imdb:tt11655566 a dbo:Film ;
+    dct:title "Lilo & Stitch" ;
+    dbo:releaseYear "2025"^^xsd:gYear ;
+    dbo:genre imdb:Genre_Action ,
+              imdb:Genre_Drama ,
+              imdb:Genre_Comedy ;
+    owl:sameAs <https://www.imdb.com/title/tt11655566> .
+
+imdb:Genre_Action a dbo:Genre ;
+    rdfs:label "Action" ;
+    owl:sameAs <http://dbpedia.org/resource/Action_film> .
+
+imdb:Genre_Drama a dbo:Genre ;
+    rdfs:label "Drama" ;
+    owl:sameAs <http://dbpedia.org/resource/Drama_film> .
+
+imdb:Genre_Comedy a dbo:Genre ;
+    rdfs:label "Comedy" ;
+    owl:sameAs <http://dbpedia.org/resource/Comedy_film> .
+
+# extension: frames and elements
+
+# Frame: Creation
+ls:Frame_Creation a fs:Frame ;
+    rdfs:label "Creation" ;
+    fs:trigger ls:Trigger_illegalExperiment ;
+    fs:experiencer ls:Jumba ,
+                   ls:Council ;
+    fs:emotion ls:State_pride_Jumba ,
+                ls:State_horrorCondemn_Council ;
+    fs:outcome ls:Event_riskOfExile ;
+    fs:alignsTo framenet:Creation ,
+                propbank:create.01 ,
+                wn30:create-v.01 .
+
+ls:Trigger_illegalExperiment a fs:Trigger ;
+    rdfs:label "illegal experiment" ;
+    fs:denotes ls:Event_illegalExperiment ;
+    fs:alignsTo framenet:Experiment ,
+                propbank:experiment.01 ,
+                wn30:experiment-n.01 .
+
+ls:Event_illegalExperiment a fs:Event ;
+    rdfs:label "illegal experiment" ;
+    fs:alignsTo dbo:Experiment .
+
+ls:Jumba a foaf:Person ;
+    rdfs:label "Jumba" ;
+    owl:sameAs <http://dbpedia.org/resource/Dr._Jumba_Jookiba> .
+
+ls:Council a fs:Group ;
+    rdfs:label "Council" ;
+    owl:sameAs <http://dbpedia.org/resource/Galactic_Federation> .
+
+ls:State_pride_Jumba a fs:State ;
+    rdfs:label "pride" ;
+    fs:feelState true ;
+    fs:experiencer ls:Jumba ;
+    fs:alignsTo framenet:Pride ,
+                wn30:pride-n.01 .
+
+ls:State_horrorCondemn_Council a fs:State ;
+    rdfs:label "horror/condemnation" ;
+    fs:feelState true ;
+    fs:experiencer ls:Council ;
+    fs:alignsTo wn30:horror-n.01 ,
+                wn30:condemnation-n.01 .
+
+ls:Event_riskOfExile a fs:Event ;
+    rdfs:label "exile risk" ;
+    fs:resultingEvent true ;
+    fs:alignsTo wn30:risk-n.01 .
+
+# Frame: Condemnation/Judgment
+ls:Frame_CondemnationJudgment a fs:Frame ;
+    rdfs:label "Condemnation/Judgment" ;
+    fs:trigger ls:Trigger_626AppearanceBehavior ;
+    fs:experiencer ls:Crowd ,
+                   ls:Officials ;
+    fs:emotion ls:State_fear_Crowd ,
+                ls:State_disgust_Crowd ;
+    fs:outcome ls:Event_orderDestroyExile ;
+    fs:alignsTo framenet:Judgment ,
+                propbank:judge.01 ,
+                wn30:judge-v.01 .
+
+ls:Trigger_626AppearanceBehavior a fs:Trigger ;
+    rdfs:label "626's appearance/behavior" ;
+    fs:denotes ls:Event_626AppearanceBehavior ;
+    fs:alignsTo wn30:appearance-n.01 ,
+                framenet:Appearance .
+
+ls:Event_626AppearanceBehavior a fs:Event ;
+    rdfs:label "Experiment 626 appearance or behavior" ;
+    fs:alignsTo ls:Experiment626 .
+
+ls:Experiment626 a fs:Entity ;
+    rdfs:label "Experiment 626" ;
+    owl:sameAs <http://dbpedia.org/resource/Stitch> .
+
+ls:Crowd a fs:Group ;
+    rdfs:label "crowd" ;
+    fs:alignsTo wn30:crowd-n.01 .
+
+ls:Officials a fs:Group ;
+    rdfs:label "officials" ;
+    fs:alignsTo wn30:official-n.01 .
+
+ls:State_fear_Crowd a fs:State ;
+    rdfs:label "fear" ;
+    fs:feelState true ;
+    fs:experiencer ls:Crowd ;
+    fs:alignsTo framenet:Fear ,
+                wn30:fear-n.01 .
+
+ls:State_disgust_Crowd a fs:State ;
+    rdfs:label "disgust" ;
+    fs:feelState true ;
+    fs:experiencer ls:Crowd ;
+    fs:alignsTo framenet:Disgust ,
+                wn30:disgust-n.01 .
+
+ls:Event_orderDestroyExile a fs:Event ;
+    rdfs:label "order to destroy or exile" ;
+    fs:resultingEvent true ;
+    fs:alignsTo propbank:order.01 ,
+                wn30:order-n.01 .
+
+# Frame: Escape/Search
+ls:Frame_EscapeSearch a fs:Frame ;
+    rdfs:label "Escape/Search" ;
+    fs:trigger ls:Trigger_626FleesToEarth ;
+    fs:experiencer ls:Jumba ,
+                   ls:Pleakley ,
+                   ls:Federation ;
+    fs:emotion ls:State_urgency ,
+                ls:State_anxiety ;
+    fs:outcome ls:Event_missionToCapture ;
+    fs:alignsTo framenet:Escape ,
+                propbank:flee.01 ,
+                wn30:flee-v.01 .
+
+ls:Trigger_626FleesToEarth a fs:Trigger ;
+    rdfs:label "626 flees to Earth" ;
+    fs:denotes ls:Event_626EscapeToEarth ;
+    fs:alignsTo verbatlas:ESCAPE .
+
+ls:Event_626EscapeToEarth a fs:Event ;
+    rdfs:label "Experiment 626 escapes to Earth" ;
+    fs:alignsTo dbo:Place ; # Earth
+    owl:sameAs <http://dbpedia.org/resource/Earth> .
+
+ls:Pleakley a foaf:Person ;
+    rdfs:label "Pleakley" ;
+    owl:sameAs <http://dbpedia.org/resource/Pleakley> .
+
+ls:Federation a fs:Group ;
+    rdfs:label "Federation" ;
+    owl:sameAs <http://dbpedia.org/resource/Galactic_Federation> .
+
+ls:State_urgency a fs:State ;
+    rdfs:label "urgency" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Urgency ,
+                wn30:urgency-n.01 .
+
+ls:State_anxiety a fs:State ;
+    rdfs:label "anxiety" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Anxiety ,
+                wn30:anxiety-n.01 .
+
+ls:Event_missionToCapture a fs:Event ;
+    rdfs:label "mission to capture" ;
+    fs:resultingEvent true ;
+    fs:alignsTo propbank:capture.01 ,
+                wn30:capture-n.01 .
+
+# Frame: Loneliness/Wish
+ls:Frame_LonelinessWish a fs:Frame ;
+    rdfs:label "Loneliness/Wish" ;
+    fs:trigger ls:Trigger_LilosWishFriend ;
+    fs:experiencer ls:Lilo ;
+    fs:emotion ls:State_longing ,
+                ls:State_sadness_Lilo ;
+    fs:outcome ls:Event_adoptionStitch ;
+    fs:alignsTo framenet:Wish ,
+                propbank:wish.01 ,
+                wn30:wish-n.01 .
+
+ls:Trigger_LilosWishFriend a fs:Trigger ;
+    rdfs:label "Lilo's wish for a friend" ;
+    fs:denotes ls:Event_LiloWishFriend ;
+    fs:alignsTo wn30:wish-n.01 .
+
+ls:Event_LiloWishFriend a fs:Event .
+
+ls:Lilo a foaf:Person ;
+    rdfs:label "Lilo" ;
+    owl:sameAs <http://dbpedia.org/resource/Lilo_Pelekai> .
+
+ls:State_longing a fs:State ;
+    rdfs:label "longing" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Longing ,
+                wn30:longing-n.01 .
+
+ls:State_sadness_Lilo a fs:State ;
+    rdfs:label "sadness" ;
+    fs:feelState true ;
+    fs:experiencer ls:Lilo ;
+    fs:alignsTo framenet:Sadness ,
+                wn30:sadness-n.01 .
+
+ls:Event_adoptionStitch a fs:Event ;
+    rdfs:label "adoption of Stitch" ;
+    fs:resultingEvent true ;
+    fs:alignsTo propbank:adopt.01 ,
+                wn30:adoption-n.01 .
+
+# Frame: Responsibility/Stress
+ls:Frame_ResponsibilityStress a fs:Frame ;
+    rdfs:label "Responsibility/Stress" ;
+    fs:trigger ls:Trigger_financialStruggleSocialThreat ;
+    fs:experiencer ls:Nani ;
+    fs:emotion ls:State_fear_Nani ,
+                ls:State_pressure ,
+                ls:State_protectiveness ;
+    fs:outcome ls:Event_raceKeepFamily ;
+    fs:alignsTo framenet:Responsibility ,
+                propbank:responsibility.01 ,
+                wn30:responsibility-n.01 .
+
+ls:Trigger_financialStruggleSocialThreat a fs:Trigger ;
+    rdfs:label "financial struggle and social-worker threat" ;
+    fs:denotes ls:Event_financialStruggleThreat ;
+    fs:alignsTo wn30:threat-n.01 .
+
+ls:Nani a foaf:Person ;
+    rdfs:label "Nani Pelekai" ;
+    owl:sameAs <http://dbpedia.org/resource/Nani_Pelekai> .
+
+ls:State_fear_Nani a fs:State ;
+    rdfs:label "fear" ;
+    fs:feelState true ;
+    fs:experiencer ls:Nani ;
+    fs:alignsTo wn30:fear-n.01 .
+
+ls:State_pressure a fs:State ;
+    rdfs:label "pressure" ;
+    fs:feelState true ;
+    fs:alignsTo wn30:pressure-n.01 .
+
+ls:State_protectiveness a fs:State ;
+    rdfs:label "protectiveness" ;
+    fs:feelState true ;
+    fs:alignsTo wn30:protectiveness-n.01 .
+
+ls:Event_raceKeepFamily a fs:Event ;
+    rdfs:label "race to keep family together" ;
+    fs:resultingEvent true ;
+    fs:alignsTo propbank:race.01 ,
+                wn30:race-n.01 .
+
+# Frame: Social Rejection
+ls:Frame_SocialRejection a fs:Frame ;
+    rdfs:label "Social Rejection" ;
+    fs:trigger ls:Trigger_LilosBehaviorHulaSchool ;
+    fs:experiencer ls:Lilo ,
+                   ls:Community ;
+    fs:emotion ls:State_embarrassment ,
+                ls:State_alienation ;
+    fs:outcome ls:Event_increasedVulnerability ;
+    fs:alignsTo framenet:Rejection ,
+                propbank:reject.01 ,
+                wn30:rejection-n.01 .
+
+ls:Trigger_LilosBehaviorHulaSchool a fs:Trigger ;
+    rdfs:label "Lilo's behavior at hula/school" ;
+    fs:denotes ls:Event_LiloSocialBehavior ;
+    fs:alignsTo wn30:behavior-n.01 .
+
+ls:Community a fs:Group ;
+    rdfs:label "community" ;
+    fs:alignsTo wn30:community-n.01 .
+
+ls:State_embarrassment a fs:State ;
+    rdfs:label "embarrassment" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Embarrassment ,
+                wn30:embarrassment-n.01 .
+
+ls:State_alienation a fs:State ;
+    rdfs:label "alienation" ;
+    fs:feelState true ;
+    fs:alignsTo wn30:alienation-n.01 .
+
+ls:Event_increasedVulnerability a fs:Event ;
+    rdfs:label "increased vulnerability" ;
+    fs:resultingEvent true ;
+    fs:alignsTo wn30:vulnerability-n.01 .
+
+# Frame: Bonding/Attachment
+ls:Frame_BondingAttachment a fs:Frame ;
+    rdfs:label "Bonding/Attachment" ;
+    fs:trigger ls:Trigger_sharedMoments_LiloStitch ;
+    fs:experiencer ls:Lilo ,
+                   ls:Experiment626 ;
+    fs:emotion ls:State_joy ,
+                ls:State_belonging ,
+                ls:State_affection ;
+    fs:outcome ls:Event_mutualProtection ;
+    fs:alignsTo framenet:Attachment ,
+                propbank:attach.01 ,
+                wn30:attachment-n.01 .
+
+ls:Trigger_sharedMoments_LiloStitch a fs:Trigger ;
+    rdfs:label "shared moments between Lilo and Stitch" ;
+    fs:denotes ls:Event_sharedMoments ;
+    fs:alignsTo wn30:moment-n.01 .
+
+ls:State_joy a fs:State ;
+    rdfs:label "joy" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Joy ,
+                wn30:joy-n.01 .
+
+ls:State_belonging a fs:State ;
+    rdfs:label "belonging" ;
+    fs:feelState true ;
+    fs:alignsTo wn30:belonging-n.01 .
+
+ls:State_affection a fs:State ;
+    rdfs:label "affection" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Affection ,
+                wn30:affection-n.01 .
+
+ls:Event_mutualProtection a fs:Event ;
+    rdfs:label "mutual protection" ;
+    fs:resultingEvent true ;
+    fs:alignsTo propbank:protect.01 ,
+                wn30:protection-n.01 .
+
+# Frame: Protection/Sacrifice
+ls:Frame_ProtectionSacrifice a fs:Frame ;
+    rdfs:label "Protection/Sacrifice" ;
+    fs:trigger ls:Trigger_StitchRescues ;
+    fs:experiencer ls:Experiment626 ,
+                   ls:Family ;
+    fs:emotion ls:State_courage ,
+                ls:State_love ;
+    fs:outcome ls:Event_proveGoodness ;
+    fs:alignsTo framenet:Protection ,
+                propbank:protect.01 ,
+                wn30:protect-v.01 .
+
+ls:Trigger_StitchRescues a fs:Trigger ;
+    rdfs:label "Stitch rescues Lilo and others" ;
+    fs:denotes ls:Event_rescue ;
+    fs:alignsTo framenet:Rescue ,
+                propbank:rescue.01 ,
+                wn30:rescue-n.01 .
+
+ls:Family a fs:Group ;
+    rdfs:label "family" ;
+    fs:alignsTo wn30:family-n.01 .
+
+ls:State_courage a fs:State ;
+    rdfs:label "courage" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Courage ,
+                wn30:courage-n.01 .
+
+ls:State_love a fs:State ;
+    rdfs:label "love" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Love ,
+                wn30:love-n.01 .
+
+ls:Event_proveGoodness a fs:Event ;
+    rdfs:label "proves Stitch's goodness" ;
+    fs:resultingEvent true ;
+    fs:alignsTo propbank:prove.01 ,
+                wn30:proof-n.01 .
+
+# Frame: Authority/Conflict
+ls:Frame_AuthorityConflict a fs:Frame ;
+    rdfs:label "Authority/Conflict" ;
+    fs:trigger ls:Trigger_FederationCouncilIntervention ;
+    fs:experiencer ls:GrandCouncilwoman ,
+                   ls:Cobra ,
+                   ls:Jumba ;
+    fs:emotion ls:State_distrust ,
+                ls:State_moralDilemma ;
+    fs:outcome ls:Event_negotiationFate ;
+    fs:alignsTo framenet:Conflict ,
+                propbank:conflict.01 ,
+                wn30:conflict-n.01 .
+
+ls:Trigger_FederationCouncilIntervention a fs:Trigger ;
+    rdfs:label "Federation/Council intervention" ;
+    fs:denotes ls:Event_intervention ;
+    fs:alignsTo wn30:intervention-n.01 .
+
+ls:GrandCouncilwoman a foaf:Person ;
+    rdfs:label "Grand Councilwoman" ;
+    owl:sameAs <http://dbpedia.org/resource/Grand_Councilwoman> .
+
+ls:Cobra a foaf:Person ;
+    rdfs:label "Cobra Bubbles" ;
+    owl:sameAs <http://dbpedia.org/resource/Cobra_Bubbles> .
+
+ls:State_distrust a fs:State ;
+    rdfs:label "distrust" ;
+    fs:feelState true ;
+    fs:alignsTo wn30:distrust-n.01 .
+
+ls:State_moralDilemma a fs:State ;
+    rdfs:label "moral dilemma" ;
+    fs:feelState true ;
+    fs:alignsTo wn30:dilemma-n.01 .
+
+ls:Event_negotiationFate a fs:Event ;
+    rdfs:label "negotiation over Stitch's fate" ;
+    fs:resultingEvent true ;
+    fs:alignsTo propbank:negotiate.01 ,
+                wn30:negotiation-n.01 .
+
+# Frame: Resolution/Reintegration
+ls:Frame_ResolutionReintegration a fs:Frame ;
+    rdfs:label "Resolution/Reintegration" ;
+    fs:trigger ls:Trigger_CouncilSentenceExileEarth ;
+    fs:experiencer ls:Lilo ,
+                   ls:Nani ,
+                   ls:Experiment626 ,
+                   ls:Community ;
+    fs:emotion ls:State_relief ,
+                ls:State_hope ,
+                ls:State_renewedOhana ;
+    fs:outcome ls:Event_familyPreservedFuturePossibilities ;
+    fs:alignsTo framenet:Reintegration ,
+                propbank:reinstate.01 ,
+                wn30:reintegration-n.01 .
+
+ls:Trigger_CouncilSentenceExileEarth a fs:Trigger ;
+    rdfs:label "Council sentences exile on Earth with supervision" ;
+    fs:denotes ls:Event_sentenceExile ;
+    fs:alignsTo wn30:sentence-n.01 .
+
+ls:State_relief a fs:State ;
+    rdfs:label "relief" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Relief ,
+                wn30:relief-n.01 .
+
+ls:State_hope a fs:State ;
+    rdfs:label "hope" ;
+    fs:feelState true ;
+    fs:alignsTo framenet:Hope ,
+                wn30:hope-n.01 .
+
+ls:State_renewedOhana a fs:State ;
+    rdfs:label "renewed ʻohana" ;
+    fs:feelState true ;
+    fs:alignsTo wn30:family-n.01 .
+
+ls:Event_familyPreservedFuturePossibilities a fs:Event ;
+    rdfs:label "family preserved, future possibilities" ;
+    fs:resultingEvent true ;
+    fs:alignsTo wn30:possibility-n.01 .
