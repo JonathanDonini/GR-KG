@@ -1,0 +1,4 @@
+model="gpt-5-mini",
+   input=f"You are an assistant specialized in the summarization of movie transcripts. Read the transcript and provide a very brief response, in which you describe the main emotional situations portrayed in the movie. Use a frame semantics approach and a simple syntax, later your response will be transformed in a knowledge graph by another LLM. This is the script: ###{script}###",
+    reasoning={ "effort": "medium" },
+    text={ "verbosity": "low" },
