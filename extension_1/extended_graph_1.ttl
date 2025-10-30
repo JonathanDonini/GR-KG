@@ -1,0 +1,109 @@
+@prefix imdb: <http://example.org/imdb/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix pb: <http://propbank.org/pb/> .
+@prefix wn: <http://wordnet-rdf.princeton.edu/wn30/> .
+@prefix vap: <https://w3id.org/framester/verbAtlas/> .
+@prefix fr: <https://w3id.org/framester/schema/> .
+@prefix fne: <https://w3id.org/framester/fn/> .
+@prefix dbp: <http://dbpedia.org/resource/> .
+@prefix dzero: <http://www.ontologydesignpatterns.org/ont/dolce/zero/0.1#> .
+
+imdb:tt11655566 a dbo:Film ;
+    dct:title "Lilo & Stitch" ;
+    dbo:releaseYear "2025"^^xsd:gYear ;
+    dbo:genre imdb:Genre_Action ,
+              imdb:Genre_Drama ,
+              imdb:Genre_Comedy ;
+    owl:sameAs <https://www.imdb.com/title/tt11655566> .
+
+imdb:Genre_Action a dbo:Genre ;
+    rdfs:label "Action" ;
+    owl:sameAs <http://dbpedia.org/resource/Action_film> .
+
+imdb:Genre_Drama a dbo:Genre ;
+    rdfs:label "Drama" ;
+    owl:sameAs <http://dbpedia.org/resource/Drama_film> .
+
+imdb:Genre_Comedy a dbo:Genre ;
+    rdfs:label "Comedy" ;
+    owl:sameAs <http://dbpedia.org/resource/Comedy_film> .
+
+imdb:ViewerGroup a foaf:Group, dzero:SocialAgent ;
+    rdfs:label "Viewers" .
+
+imdb:Group_FamiliesKids a foaf:Group, dzero:SocialAgent ;
+    rdfs:label "Families and kids" .
+
+imdb:Group_LongtimeFans a foaf:Group, dzero:SocialAgent ;
+    rdfs:label "Longtime fans" .
+
+imdb:Stitch a dbo:Character ;
+    rdfs:label "Stitch" ;
+    owl:sameAs dbp:Stitch_(Disney) .
+
+imdb:Performance a dbo:Performance ;
+    rdfs:label "Performances" ;
+    owl:sameAs dbp:Performance_(arts) .
+
+# Events and changes
+:reaction1 a fr:ReactionEvent ;
+    fr:evokedBy pb:react-01, wn:react%2:38:00 ;
+    fr:Experiencer imdb:ViewerGroup ;
+    fr:Stimulus imdb:tt11655566 ;
+    fr:CauseEmotion dbp:Nostalgia ;
+    rdfs:comment "polarized nostalgia" .
+
+:love1 a fr:PositiveEvaluationEvent ;
+    fr:evokedBy pb:love-01, wn:love%2:37:01, vap:Love ;
+    fr:Experiencer imdb:Group_FamiliesKids ;
+    fr:Stimulus imdb:tt11655566 ;
+    rdfs:label "loved it" .
+
+:praise1 a fr:PraiseEvent ;
+    fr:evokedBy pb:praise-01, wn:praise%2:31:00 ;
+    fr:Experiencer imdb:Group_FamiliesKids ;
+    fr:Stimulus imdb:Stitch, imdb:Performance ;
+    rdfs:label "praised Stitch and performances" .
+
+:critique1 a fr:CriticismEvent ;
+    fr:evokedBy pb:criticize-01, wn:criticize%2:41:00 ;
+    fr:Experiencer imdb:Group_LongtimeFans ;
+    fr:Stimulus :characterEndingChanges ;
+    fr:Manner dbp:Anger ;
+    rdfs:label "angrily criticized changes" .
+
+:characterEndingChanges a fr:Change ;
+    rdfs:label "character/ending changes" ;
+    fr:hasPart :naniCustodyChange, :jumbaGantuCastingChange ;
+    owl:sameAs dbp:Change_(word) .
+
+:naniCustodyChange a fr:Change ;
+    rdfs:label "Nani's custody change" .
+
+:jumbaGantuCastingChange a fr:Change ;
+    rdfs:label "Jumba/Gantu and casting change" .
+
+:debate1 a fr:DebateEvent ;
+    fr:evokedBy pb:debate-01, wn:debate%2:32:00 ;
+    fr:Theme dbp:Cultural_debate ;
+    fr:Cause :critique1 ;
+    rdfs:label "sparked cultural debate" .
+
+:boxoffice1 a fr:SuccessEvent ;
+    fr:Experiencer imdb:tt11655566 ;
+    fr:Attribute dbp:Box_office ;
+    fr:Polarity "positive" ;
+    rdfs:label "strong box-office success" .
+
+# Frame alignments
+fr:ReactionEvent        owl:equivalentClass dbp:Reaction .
+fr:PositiveEvaluationEvent owl:equivalentClass dbp:Positive_evaluation .
+fr:PraiseEvent          owl:equivalentClass dbp:Praise .
+fr:CriticismEvent       owl:equivalentClass dbp:Criticism .
+fr:DebateEvent          owl:equivalentClass dbp:Debate .
+fr:SuccessEvent         owl:equivalentClass dbp:Success .

@@ -1,0 +1,4 @@
+model="gpt-5-mini",
+    input=f"You are an assistant specialized in the analysis of comments about a movie from Reddit users. Read all the comments and provide a very brief response, in which you describe the immediate reaction of the viewers. Use a a simple syntax, later your response will be transformed in a knowledge graph by another LLM. Limit the response to a single phrase starting like 'the viewers reacted...'. These are the comments from the viewers: ###{comments}###",
+    reasoning={ "effort": "low" },
+    text={ "verbosity": "low" }

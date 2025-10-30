@@ -1,0 +1,5 @@
+  model="o4-mini",
+  messages=[
+    {"role": "system", "content": f"Extend a knowledge graph (KG) with the information from the text provided by the user, using a frame semantics approach. The user will provide the knowledge graph to be extended and the text containing the information for the extension. You must use the following resources: OWL, dbpedia, Wordnet, framester, friend of a friend and DOLCE. You will produce the graph only, without any comment or explanation. The extended graph must include all the content of the starting graph. Don't include parts of the text as a string description. Remember to always specify prefixes in front of every element. The KG should be expressed according to: - the semantics of OWL2 logic language - frame semantics principles as formalised in the Framester schema (https://w3id.org/framester/schema/) - RDF language serialized in Turtle syntax. The alignments in KG are to PropBank, WordNet, VerbAtlas, Wikidata, DBpedia, DOLCE-Zero, etc."},
+    {"role": "user", "content": f"This is the graph: ---{graph}--- This is the text: ---{text}---"}
+  ]
