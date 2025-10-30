@@ -34,6 +34,12 @@ The information for the extension is extracted from a collection of [Reddit](htt
 ### [Extension 2](extension_2)
 The information for the extension consists of the semantic frames of emotional situations portrayed in the movie, extracted from the movie transcript.
 
+### [Extension 3](extension_3)
+The information for the extension is a summary of the movie plot, extracted from the Wikipedia article [Lilo & Stitch (2025 film)](https://en.wikipedia.org/wiki/Lilo_%26_Stitch_(2025_film))
+
+### [Extension 4](extension_4)
+This example shows a double iteration of the procedure. The [extended KG](extension_3/extended_graph_3.ttl) from Extension 3 is now used as an input and further extended with the [information](extension_1/GR_response_1.txt) from Extension 1, resulting in a [new extended KG](extension_4/extended_graph_4.ttl). 
+
 ## Further Information and References
 For further information and references, check the pdf [document](GR_KG.pdf).
 

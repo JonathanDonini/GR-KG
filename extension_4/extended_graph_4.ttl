@@ -1,0 +1,370 @@
+@prefix imdb: <http://example.org/imdb/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fr: <https://w3id.org/framester/schema/> .
+@prefix pb: <http://propbank.org/frames/> .
+@prefix wn31: <http://wordnet-rdf.princeton.edu/wn31/> .
+@prefix d0: <http://www.ontologydesignpatterns.org/ont/d0.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+imdb:tt11655566 a dbo:Film ;
+    dct:title "Lilo & Stitch" ;
+    dbo:releaseYear "2025"^^xsd:gYear ;
+    dbo:genre imdb:Genre_Action ,
+              imdb:Genre_Drama ,
+              imdb:Genre_Comedy ;
+    owl:sameAs <https://www.imdb.com/title/tt11655566> .
+
+imdb:Genre_Action a dbo:Genre ;
+    rdfs:label "Action" ;
+    owl:sameAs <http://dbpedia.org/resource/Action_film> .
+
+imdb:Genre_Drama a dbo:Genre ;
+    rdfs:label "Drama" ;
+    owl:sameAs <http://dbpedia.org/resource/Drama_film> .
+
+imdb:Genre_Comedy a dbo:Genre ;
+    rdfs:label "Comedy" ;
+    owl:sameAs <http://dbpedia.org/resource/Comedy_film> .
+
+imdb:JumbaJookiba             a dbo:Person ; rdfs:label "Jumba Jookiba" ; owl:sameAs dbpedia:Jumba_Jookiba .
+imdb:Experiment_626            a dbo:Species ; rdfs:label "Experiment 626 (Stitch)" ; owl:sameAs dbpedia:Experiment_626 .
+imdb:Earth                     a dbo:Planet  ; owl:sameAs dbpedia:Earth .
+imdb:Kauai                     a dbo:Place   ; rdfs:label "Kauaʻi" .
+imdb:Grand_Councilwoman        a dbo:Person ; rdfs:label "Grand Councilwoman" .
+imdb:Agent_Pleakley            a dbo:Agent  ; rdfs:label "Agent Pleakley" .
+imdb:Lilo_Pelekai              a dbo:Person ; rdfs:label "Lilo Pelekai" .
+imdb:Mrs_Kekoa                 a dbo:Person ; rdfs:label "Mrs. Kekoa" .
+imdb:Nani_Pelekai              a dbo:Person ; rdfs:label "Nani Pelekai" .
+imdb:Cobra_Bubbles             a dbo:Person ; rdfs:label "Cobra Bubbles" .
+imdb:David_Pelekai             a dbo:Person ; rdfs:label "David" .
+imdb:Tutu                      a dbo:Person ; rdfs:label "Tūtū" .
+imdb:Wedding                   a dbo:Event  ; rdfs:label "wedding" .
+imdb:Tourist_Trolley           a dbo:Vehicle; rdfs:label "tourist trolley" .
+imdb:Animal_Shelter            a dbo:Facility ; rdfs:label "animal shelter" .
+imdb:Hula_School               a dbo:EducationalInstitution ; rdfs:label "hula school" .
+imdb:Resort_Incident           a d0:Event ; rdfs:label "resort incident" .
+imdb:Ship                      a dbo:Vehicle ; rdfs:label "spaceship" .
+imdb:Ocean                     a dbo:WaterBody ; rdfs:label "ocean" .
+imdb:House                     a dbo:Building ; rdfs:label "house" .
+imdb:Jumba_Portal_Gun          a dbo:Device ; rdfs:label "Jumba's portal gun" .
+imdb:FitnessProof              a d0:State  ; rdfs:label "proof of fitness as guardian" .
+imdb:Jumba_Freedom             a d0:State  ; rdfs:label "freedom for Jumba" .
+imdb:Guardianship              a d0:State  ; rdfs:label "guardianship status" .
+imdb:Guilt                     a d0:State  ; rdfs:label "guilt" .
+imdb:House_Repaired            a d0:State  ; rdfs:label "house repaired" .
+imdb:Employer_of_Nani          a dbo:Agent  ; rdfs:label "employer of Nani" .
+imdb:Protection                a d0:State  ; rdfs:label "protection" .
+imdb:Experiment_626_Empathy    a d0:State  ; rdfs:label "Stitch's empathy" .
+imdb:Happy_Ohana               a d0:State  ; rdfs:label "ʻOhana lives happily" .
+
+imdb:E1 a d0:Event, fr:Frame ;
+    fr:frameName "convict.01"@en ;
+    fr:lu pb:convict_01 ;
+    fr:hasFE _:e1f1 , _:e1f2 .
+_:e1f1 fr:feName "Arg0" ; fr:entity imdb:JumbaJookiba .
+_:e1f2 fr:feName "Arg1" ; fr:entity imdb:Illegal_Genetic_Experimentation .
+imdb:Illegal_Genetic_Experimentation a d0:State ; rdfs:label "illegal genetic experimentation" .
+
+imdb:E2 a d0:Event, fr:Frame ;
+    fr:frameName "create.01"@en ;
+    fr:lu pb:create_01 ;
+    fr:hasFE _:e2f1 , _:e2f2 .
+_:e2f1 fr:feName "Arg0" ; fr:entity imdb:JumbaJookiba .
+_:e2f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+
+imdb:E3 a d0:Event, fr:Frame ;
+    fr:frameName "escape.01"@en ;
+    fr:lu pb:escape_01 ;
+    fr:hasFE _:e3f1 , _:e3f2 , _:e3f3 .
+_:e3f1 fr:feName "Arg0" ; fr:entity imdb:Experiment_626 .
+_:e3f2 fr:feName "ArgM-LOC" ; fr:entity imdb:Earth .
+_:e3f3 fr:feName "ArgM-LOC" ; fr:entity imdb:Kauai .
+
+imdb:E4 a d0:Event, fr:Frame ;
+    fr:frameName "offer.01"@en ;
+    fr:lu pb:offer_01 ;
+    fr:hasFE _:e4f1 , _:e4f2 , _:e4f3 , _:e4f4 .
+_:e4f1 fr:feName "Arg0" ; fr:entity imdb:Grand_Councilwoman .
+_:e4f2 fr:feName "Arg1" ; fr:entity imdb:JumbaJookiba .
+_:e4f3 fr:feName "Arg2" ; fr:entity imdb:Jumba_Freedom .
+_:e4f4 fr:feName "ArgM-PRP" ; fr:entity imdb:E5 .
+
+imdb:E5 a d0:Event, fr:Frame ;
+    fr:frameName "capture.01"@en ;
+    fr:lu pb:capture_01 ;
+    fr:hasFE _:e5f1 , _:e5f2 .
+_:e5f1 fr:feName "Arg0" ; fr:entity imdb:JumbaJookiba .
+_:e5f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+
+imdb:E6 a d0:Event, fr:Frame ;
+    fr:frameName "pair.01"@en ;
+    fr:lu pb:pair_01 ;
+    fr:hasFE _:e6f1 , _:e6f2 .
+_:e6f1 fr:feName "Arg0" ; fr:entity imdb:JumbaJookiba .
+_:e6f2 fr:feName "Arg1" ; fr:entity imdb:Agent_Pleakley .
+
+imdb:E7 a d0:Event, fr:Frame ;
+    fr:frameName "crash.01"@en ;
+    fr:lu pb:crash_01 ;
+    fr:hasFE _:e7f1 , _:e7f2 .
+_:e7f1 fr:feName "Arg0" ; fr:entity imdb:Experiment_626 .
+_:e7f2 fr:feName "ArgM-LOC" ; fr:entity imdb:Wedding .
+
+imdb:E8 a d0:Event, fr:Frame ;
+    fr:frameName "injure.01"@en ;
+    fr:lu pb:injure_01 ;
+    fr:hasFE _:e8f1 , _:e8f2 .
+_:e8f1 fr:feName "Arg0" ; fr:entity imdb:Tourist_Trolley .
+_:e8f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+
+imdb:E9 a d0:Event, fr:Frame ;
+    fr:frameName "transport.01"@en ;
+    fr:lu pb:transport_01 ;
+    fr:hasFE _:e9f1 , _:e9f2 .
+_:e9f1 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+_:e9f2 fr:feName "Arg2" ; fr:entity imdb:Animal_Shelter .
+
+imdb:E10 a d0:Event, fr:Frame ;
+    fr:frameName "expel.01"@en ;
+    fr:lu pb:expel_01 ;
+    fr:hasFE _:e10f1 , _:e10f2 .
+_:e10f1 fr:feName "Arg0" ; fr:entity imdb:Hula_School .
+_:e10f2 fr:feName "Arg1" ; fr:entity imdb:Lilo_Pelekai .
+
+imdb:E11 a d0:Event, fr:Frame ;
+    fr:frameName "warn.01"@en ;
+    fr:lu pb:warn_01 ;
+    fr:hasFE _:e11f1 , _:e11f2 , _:e11f3 .
+_:e11f1 fr:feName "Arg0" ; fr:entity imdb:Mrs_Kekoa .
+_:e11f2 fr:feName "Arg1" ; fr:entity imdb:Nani_Pelekai .
+_:e11f3 fr:feName "ArgM-DIR" ; fr:entity imdb:FitnessProof .
+
+imdb:E12 a d0:Event, fr:Frame ;
+    fr:frameName "adopt.01"@en ;
+    fr:lu pb:adopt_01 ;
+    fr:hasFE _:e12f1 , _:e12f2 .
+_:e12f1 fr:feName "Arg0" ; fr:entity imdb:Lilo_Pelekai .
+_:e12f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+
+imdb:E13 a d0:Event, fr:Frame ;
+    fr:frameName "cause.01"@en ;
+    fr:lu pb:cause_01 ;
+    fr:hasFE _:e13f1 , _:e13f2 .
+_:e13f1 fr:feName "Arg0" ; fr:entity imdb:Experiment_626 .
+_:e13f2 fr:feName "Arg1" ; fr:entity imdb:Resort_Incident .
+
+imdb:E14 a d0:Event, fr:Frame ;
+    fr:frameName "dismiss.01"@en ;
+    fr:lu pb:dismiss_01 ;
+    fr:hasFE _:e14f1 , _:e14f2 .
+_:e14f1 fr:feName "Arg0" ; fr:entity imdb:Employer_of_Nani .
+_:e14f2 fr:feName "Arg1" ; fr:entity imdb:Nani_Pelekai .
+
+imdb:E15 a d0:Event, fr:Frame ;
+    fr:frameName "investigate.01"@en ;
+    fr:lu pb:investigate_01 ;
+    fr:hasFE _:e15f1 , _:e15f2 .
+_:e15f1 fr:feName "Arg0" ; fr:entity imdb:Cobra_Bubbles .
+_:e15f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+
+imdb:E16 a d0:Event, fr:Frame ;
+    fr:frameName "pursue.01"@en ;
+    fr:lu pb:pursue_01 ;
+    fr:hasFE _:e16f1 , _:e16f2 , _:e16f3 .
+_:e16f1 fr:feName "Arg0" ; fr:entity imdb:JumbaJookiba .
+_:e16f2 fr:feName "Arg0" ; fr:entity imdb:Agent_Pleakley .
+_:e16f3 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+
+imdb:E17 a d0:Event, fr:Frame ;
+    fr:frameName "lose.01"@en ;
+    fr:lu pb:lose_01 ;
+    fr:hasFE _:e17f1 , _:e17f2 .
+_:e17f1 fr:feName "Arg0" ; fr:entity imdb:Nani_Pelekai .
+_:e17f2 fr:feName "Arg1" ; fr:entity imdb:Guardianship .
+
+imdb:E18 a d0:Event, fr:Frame ;
+    fr:frameName "feel.01"@en ;
+    fr:lu pb:feel_01 ;
+    fr:hasFE _:e18f1 , _:e18f2 .
+_:e18f1 fr:feName "Arg0" ; fr:entity imdb:Experiment_626 .
+_:e18f2 fr:feName "Arg1" ; fr:entity imdb:Guilt .
+
+imdb:E19 a d0:Event, fr:Frame ;
+    fr:frameName "use.01"@en ;
+    fr:lu pb:use_01 ;
+    fr:hasFE _:e19f1 , _:e19f2 , _:e19f3 .
+_:e19f1 fr:feName "Arg0" ; fr:entity imdb:Experiment_626 .
+_:e19f2 fr:feName "Arg1" ; fr:entity imdb:Lilo_Pelekai .
+_:e19f3 fr:feName "ArgM-PRP" ; fr:entity imdb:Protection .
+
+imdb:E20 a d0:Event, fr:Frame ;
+    fr:frameName "surrender.01"@en ;
+    fr:lu pb:surrender_01 ;
+    fr:hasFE _:e20f1 , _:e20f2 .
+_:e20f1 fr:feName "Arg0" ; fr:entity imdb:Experiment_626 .
+_:e20f2 fr:feName "Arg1" ; fr:entity imdb:JumbaJookiba .
+
+imdb:E21 a d0:Event, fr:Frame ;
+    fr:frameName "erase.01"@en ;
+    fr:lu pb:erase_01 ;
+    fr:hasFE _:e21f1 , _:e21f2 , _:e21f3 .
+_:e21f1 fr:feName "Arg0" ; fr:entity imdb:JumbaJookiba .
+_:e21f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626_Empathy .
+_:e21f3 fr:feName "ArgM-LOC" ; fr:entity imdb:Ship .
+
+imdb:E22 a d0:Event, fr:Frame ;
+    fr:frameName "free.01"@en ;
+    fr:lu pb:free_01 ;
+    fr:hasFE _:e22f1 , _:e22f2 , _:e22f3 .
+_:e22f1 fr:feName "Arg0" ; fr:entity imdb:Lilo_Pelekai .
+_:e22f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+_:e22f3 fr:feName "ArgM-PRS" ; fr:entity imdb:JumbaJookiba .
+
+imdb:E23 a d0:Event, fr:Frame ;
+    fr:frameName "crash.01"@en ;
+    fr:lu pb:crash_01 ;
+    fr:hasFE _:e23f1 , _:e23f2 .
+_:e23f1 fr:feName "Arg0" ; fr:entity imdb:Ship .
+_:e23f2 fr:feName "Arg1" ; fr:entity imdb:Ocean .
+
+imdb:E24 a d0:Event, fr:Frame ;
+    fr:frameName "drown.01"@en ;
+    fr:lu pb:drown_01 ;
+    fr:hasFE _:e24f1 , _:e24f2 .
+_:e24f1 fr:feName "Arg0" ; fr:entity imdb:Experiment_626 .
+_:e24f2 fr:feName "Arg1" ; fr:entity imdb:Lilo_Pelekai .
+
+imdb:E25 a d0:Event, fr:Frame ;
+    fr:frameName "rescue.01"@en ;
+    fr:lu pb:rescue_01 ;
+    fr:hasFE _:e25f1 , _:e25f2 .
+_:e25f1 fr:feName "Arg0" ; fr:entity imdb:Nani_Pelekai , imdb:David_Pelekai .
+_:e25f2 fr:feName "Arg1" ; fr:entity imdb:Lilo_Pelekai .
+
+imdb:E26 a d0:Event, fr:Frame ;
+    fr:frameName "revive.01"@en ;
+    fr:lu pb:revive_01 ;
+    fr:hasFE _:e26f1 , _:e26f2 .
+_:e26f1 fr:feName "Arg0" ; fr:entity imdb:David_Pelekai .
+_:e26f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+
+imdb:E27 a d0:Event, fr:Frame ;
+    fr:frameName "arrest.01"@en ;
+    fr:lu pb:arrest_01 ;
+    fr:hasFE _:e27f1 , _:e27f2 .
+_:e27f1 fr:feName "Arg0" ; fr:entity imdb:Grand_Councilwoman .
+_:e27f2 fr:feName "Arg1" ; fr:entity imdb:JumbaJookiba .
+
+imdb:E28 a d0:Event, fr:Frame ;
+    fr:frameName "allow.01"@en ;
+    fr:lu pb:allow_01 ;
+    fr:hasFE _:e28f1 , _:e28f2 , _:e28f3 .
+_:e28f1 fr:feName "Arg0" ; fr:entity imdb:Grand_Councilwoman .
+_:e28f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+_:e28f3 fr:feName "Arg2" ; fr:entity imdb:Earth .
+
+imdb:E29 a d0:Event, fr:Frame ;
+    fr:frameName "stay.01"@en ;
+    fr:lu pb:stay_01 ;
+    fr:hasFE _:e29f1 , _:e29f2 .
+_:e29f1 fr:feName "Arg0" ; fr:entity imdb:Agent_Pleakley .
+_:e29f2 fr:feName "Arg1" ; fr:entity imdb:tt11655566 .
+
+imdb:E30 a d0:Event, fr:Frame ;
+    fr:frameName "permit.01"@en ;
+    fr:lu pb:permit_01 ;
+    fr:hasFE _:e30f1 , _:e30f2 , _:e30f3 .
+_:e30f1 fr:feName "Arg0" ; fr:entity imdb:Mrs_Kekoa .
+_:e30f2 fr:feName "Arg1" ; fr:entity imdb:Guardianship .
+_:e30f3 fr:feName "Arg2" ; fr:entity imdb:David_Pelekai , imdb:Tutu .
+
+imdb:E31 a d0:Event, fr:Frame ;
+    fr:frameName "repair.01"@en ;
+    fr:lu pb:repair_01 ;
+    fr:hasFE _:e31f1 , _:e31f2 .
+_:e31f1 fr:feName "Arg0" ; fr:entity imdb:tt11655566 .
+_:e31f2 fr:feName "Arg1" ; fr:entity imdb:House .
+
+imdb:E32 a d0:Event, fr:Frame ;
+    fr:frameName "use.01"@en ;
+    fr:lu pb:use_01 ;
+    fr:hasFE _:e32f1 , _:e32f2 , _:e32f3 .
+_:e32f1 fr:feName "Arg0" ; fr:entity imdb:Nani_Pelekai .
+_:e32f2 fr:feName "Arg1" ; fr:entity imdb:Jumba_Portal_Gun .
+_:e32f3 fr:feName "ArgM-GOL" ; fr:entity imdb:Kauai .
+
+imdb:Families_and_Kids a foaf:Group ;
+    rdfs:label "families and kids" .
+
+imdb:Longtime_Fans a foaf:Group ;
+    rdfs:label "longtime fans" .
+
+imdb:Performances a d0:State ;
+    rdfs:label "performances" .
+
+imdb:Nanis_Custody a d0:State ;
+    rdfs:label "Nani’s custody" .
+
+imdb:Jumba_Gantu a d0:State ;
+    rdfs:label "Jumba/Gantu" .
+
+imdb:Casting_Changes a d0:State ;
+    rdfs:label "casting changes" .
+
+imdb:Character_Ending_Changes a d0:State ;
+    rdfs:label "character and ending changes" ;
+    dct:hasPart imdb:Nanis_Custody , imdb:Jumba_Gantu , imdb:Casting_Changes .
+
+imdb:Angry_Manner a d0:State ;
+    rdfs:label "angrily" .
+
+imdb:Strong_Manner a d0:State ;
+    rdfs:label "strong" .
+
+imdb:Cultural_Debate a d0:State ;
+    rdfs:label "cultural debate" .
+
+imdb:Viewers a foaf:Group ;
+    rdfs:label "viewers" .
+
+imdb:E33 a d0:Event, fr:Frame ;
+    fr:frameName "love.01"@en ;
+    fr:lu pb:love_01 ;
+    fr:hasFE _:e33f1 , _:e33f2 .
+_:e33f1 fr:feName "Arg0" ; fr:entity imdb:Families_and_Kids .
+_:e33f2 fr:feName "Arg1" ; fr:entity imdb:tt11655566 .
+
+imdb:E34 a d0:Event, fr:Frame ;
+    fr:frameName "praise.01"@en ;
+    fr:lu pb:praise_01 ;
+    fr:hasFE _:e34f1 , _:e34f2 , _:e34f3 .
+_:e34f1 fr:feName "Arg0" ; fr:entity imdb:Families_and_Kids .
+_:e34f2 fr:feName "Arg1" ; fr:entity imdb:Experiment_626 .
+_:e34f3 fr:feName "Arg2" ; fr:entity imdb:Performances .
+
+imdb:E35 a d0:Event, fr:Frame ;
+    fr:frameName "criticize.01"@en ;
+    fr:lu pb:criticize_01 ;
+    fr:hasFE _:e35f1 , _:e35f2 , _:e35f3 .
+_:e35f1 fr:feName "Arg0" ; fr:entity imdb:Longtime_Fans .
+_:e35f2 fr:feName "Arg1" ; fr:entity imdb:Character_Ending_Changes .
+_:e35f3 fr:feName "ArgM-MNR" ; fr:entity imdb:Angry_Manner .
+
+imdb:E36 a d0:Event, fr:Frame ;
+    fr:frameName "spark.01"@en ;
+    fr:lu pb:spark_01 ;
+    fr:hasFE _:e36f1 , _:e36f2 .
+_:e36f1 fr:feName "Arg0" ; fr:entity imdb:Viewers .
+_:e36f2 fr:feName "Arg1" ; fr:entity imdb:Cultural_Debate .
+
+imdb:E37 a d0:Event, fr:Frame ;
+    fr:frameName "succeed.01"@en ;
+    fr:lu pb:success_01 ;
+    fr:hasFE _:e37f1 , _:e37f2 .
+_:e37f1 fr:feName "Arg1" ; fr:entity imdb:tt11655566 .
+_:e37f2 fr:feName "ArgM-MNR" ; fr:entity imdb:Strong_Manner .
