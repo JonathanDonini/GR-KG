@@ -1,0 +1,4 @@
+   model="gpt-5-mini",
+    input=f"You are an assistant specialized in the summarization of movie plots from Wikipedia articles. Read the plot and provide a brief summary. Use a a simple syntax, later your response will be transformed in a knowledge graph by another LLM. This is the plot: ###{plot}###",
+    reasoning={ "effort": "low" },
+    text={ "verbosity": "low" }
