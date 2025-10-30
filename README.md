@@ -1,7 +1,7 @@
 # GR-KG
 Project for the University of Bologna "Cognitive Semantics for Artificial Intelligence" course (a.y. 2024-25).
 
-![Pipeline](diagram.png)
+
 
 ## Project Description
 
@@ -21,5 +21,21 @@ Notice that I use two distinct instances of the LLM instead of one. This has a f
 prompts in both instances.
 - More control over the prompts, leading to better testability and more control over the results.
 - The possibility to use two different specialized models, since the two tasks are quite different.
+
+![Pipeline](diagram.png)
+
+
+## Examples
+As use cases, I show extensions of a [KG](base_graph.ttl) that represents basic information about a movie.
+
+### Extension 1 
+The information for the extension is extracted from a collection of social media posts and comments and consists of a summary of immediate viewer reactions. 
+
+### Extension 2
+The information for the extension consists of the semantic frames of emotional situations portrayed in the movie, extracted from the movie transcript.
+
+
+
+
 
 
