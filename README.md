@@ -26,15 +26,16 @@ prompts in both instances.
 
 
 ## Examples
-As use cases, I show extensions of a [KG](base_graph.ttl) that represents basic information about a movie.
+As use cases, I show extensions of a [KG](base_graph.ttl) that represents basic information about a movie from [IMDb](https://www.imdb.com).
 
-### Extension 1 
-The information for the extension is extracted from a collection of social media posts and comments and consists of a summary of immediate viewer reactions. 
+### [Extension 1](extension_1) 
+The information for the extension is extracted from a collection of [Reddit](https://www.reddit.com) posts and comments and consists of a summary of immediate viewer reactions. 
 
-### Extension 2
+### [Extension 2](extension_2)
 The information for the extension consists of the semantic frames of emotional situations portrayed in the movie, extracted from the movie transcript.
 
-
+## Further Information and References
+For further information and references, check the pdf [document](GR KG.pdf) 
 
 
 
