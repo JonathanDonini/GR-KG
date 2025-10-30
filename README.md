@@ -35,7 +35,7 @@ The information for the extension is extracted from a collection of [Reddit](htt
 The information for the extension consists of the semantic frames of emotional situations portrayed in the movie, extracted from the movie transcript.
 
 ## Further Information and References
-For further information and references, check the pdf [document](GR KG.pdf) 
+For further information and references, check the pdf [document](GR_KG.pdf) 
 
 
 
